@@ -27,6 +27,7 @@ export async function processSocialQueue() {
   let processed = 0;
 
   try {
+    console.log('📬 [Tempo Reply] Checking for unreplied transactions...');
     // Get unreplied Tempo transactions
     const { data: transactions, error } = await supabase
       .from('monibot_transactions')
@@ -39,7 +40,10 @@ export async function processSocialQueue() {
       .limit(5);
 
     if (error) throw error;
-    if (!transactions?.length) return 0;
+    if (!transactions?.length) {
+      console.log('   No unreplied Tempo transactions.');
+      return 0;
+    }
 
     console.log(`📬 Found ${transactions.length} unreplied Tempo transactions`);
 
