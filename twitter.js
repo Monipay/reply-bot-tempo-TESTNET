@@ -7,7 +7,7 @@ import { TwitterApi } from 'twitter-api-v2';
 import { supabase } from './database.js';
 
 let twitterClient = null;
-const BOT_SETTINGS_KEY = 'twitter_oauth2_refresh_token';
+const BOT_SETTINGS_KEY = 'twitter_refresh_token_tempo';
 
 export async function initTwitterOAuth2() {
   const clientId = process.env.TWITTER_CLIENT_ID;
